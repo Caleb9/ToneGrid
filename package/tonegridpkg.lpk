@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Package Version="3">
+    <Name Value="tonegridpkg"/>
+    <Author Value="Piotr Karasinski"/>
+    <CompilerOptions>
+      <Version Value="8"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Linking>
+        <Debugging>
+          <UseHeaptrc Value="True"/>
+        </Debugging>
+      </Linking>
+      <Other>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <License Value="Copyright (C) 2010 Piotr Karasinski
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."/>
+    <Files Count="9">
+      <Item1>
+        <Filename Value="graphicgrid.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="GraphicGrid"/>
+      </Item1>
+      <Item2>
+        <Filename Value="graphicgrid.inc"/>
+        <Type Value="Include"/>
+      </Item2>
+      <Item3>
+        <Filename Value="notes.pas"/>
+        <UnitName Value="Notes"/>
+      </Item3>
+      <Item4>
+        <Filename Value="notes.inc"/>
+        <Type Value="Include"/>
+      </Item4>
+      <Item5>
+        <Filename Value="openal.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="openal"/>
+      </Item5>
+      <Item6>
+        <Filename Value="tonegridpkg.lrs"/>
+        <Type Value="LRS"/>
+      </Item6>
+      <Item7>
+        <Filename Value="pasmidi.pp"/>
+        <UnitName Value="PasMidi"/>
+      </Item7>
+      <Item8>
+        <Filename Value="cmidi.c"/>
+        <Type Value="Text"/>
+      </Item8>
+      <Item9>
+        <Filename Value="cmidi.h"/>
+        <Type Value="Text"/>
+      </Item9>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="2">
+      <Item1>
+        <PackageName Value="LCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item2>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)/"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lpr|lfm|lrs|lpi|lpk|xml|sh|png|c|h)"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

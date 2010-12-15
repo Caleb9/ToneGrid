@@ -1,0 +1,9 @@
+libopenal.so
+tonegridproject
+*.o
+*.ppu
+*.bak
+*.compiled
+*.manifest
+*.rc
+*~
