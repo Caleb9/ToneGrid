@@ -20,20 +20,21 @@
 ToneGrid
 
 peter.karasinski@gmail.com
-https://sourceforge.net/projects/tonegrid/
+http://sourceforge.net/projects/tonegrid/
 
 
 What is this?
 =============
+
 Program is inspired by Tone Matrix as can be seen for example here
 http://www.youtube.com/watch?v=OZFMpWKTAjY . On the Y axis we have
 tones of a musical scale, on the X axis we have a timeline. In other
 words it is a simplistic version of an audio sequencer. In my
 implementation, the sound is synthesized as a single sine wave of
-given frequency (fundamental frequency of a tone), therefore it sounds
-very minimalistic. On the other hand it extends the basic idea by
-several features, like control over scale mode, size, beats-per-minute
-etc.
+given frequency (fundamental frequency of a tone), which sounds very
+minimalistic, or you can select to emit MIDI messages. On the other
+hand it extends the basic idea by several features, like control over
+scale mode, size, beats-per-minute etc.
 
 The program has been written as an exercise in Free Pascal / Lazarus
 and should be regarded as a pre-alpha release. Right now user needs to
@@ -43,6 +44,7 @@ be added in the future.
 
 Supported platforms:
 ====================
+
 Program was developed entirely, and works in Linux environment. It has
 been successfully compiled for 32bit Windows as well. It should be
 possible to compile it also for Mac OS X (without MIDI support), as
@@ -50,8 +52,28 @@ Lazarus and OpenAL (see below) are both available for this platform,
 and the code is completely cross-platform, however I did not have
 access to Mac to test it.
 
+
+How to get?
+==============
+
+There is a Git repository on SourceForge. To get the source code, you
+will need a Git client installed. Then you can download the repository
+using the following command:
+
+git clone git://tonegrid.git.sourceforge.net/gitroot/tonegrid/tonegrid
+
+If you already have repository downloaded, you can update to most
+recent version with
+
+git pull
+
+The executable file for Windows (32 bit) can be downloaded from
+http://sourceforge.net/projects/tonegrid/files/
+
+
 How to compile?
 ===============
+
 Program is written and designed in Lazarus IDE (a cross-platform, open
 source emulator of Delphi). Lazarus can be obtained from
 http://www.lazarus.freepascal.org.  It should be fairly easy to
@@ -80,27 +102,38 @@ in Lazarus.
 
 How to run?
 ===========
-To synthesize sound, program makes use of OpenAL free software
-cross-platform audio API. OpenAL for different operating systems can
-be obtained from
+
+On Linux and Windows, there is MIDI support, for external and software
+synthesizers (currently, the sound card's internal synthesizers are
+not supported).
+
+The program can also synthesize tones itself, with use of OpenAl free
+software cross-platform audio API. OpenAL for different operating
+systems can be obtained from
 http://connect.creativelabs.com/openal/Downloads/Forms/AllItems.aspx
-and needs to be present on the client's computer. In a more
-professional scenario, I would prepare an installation package which
-would install OpenAL silently on Windows, or require a dependency
-package on Linux, however it would be an overkill in current case.
-On Linux and Windows, the MIDI support has been added, for external
-and software synthesizers (currently, the sound card's internal
-synthesizers are not supported). 
+ToneGrid detects if OpenAl shared/dynamic library is present on the
+system.
+
+
+More info
+=========
+
+There's a blog for the project at
+http://sourceforge.net/apps/wordpress/tonegrid/
 
 
 Troubleshooting:
 ================
-In case of audible glitches or other problems, please first of all try
-to install OpenAL from the installer downloaded from
-http://connect.creativelabs.com/openal/Downloads/Forms/AllItems.aspx
-and, if in Windows, remove the OpenAL32.dll file from the ToneMatrix
-project directory. In Linux the installation of OpenAL is dependent on
-the distro. Do not hesitate to email me for support.
+
+In case of audible glitches or other problems while using OpenAl,
+please first of all try to (re)install OpenAL from the installer
+downloaded from
+http://connect.creativelabs.com/openal/Downloads/Forms/AllItems.aspx. In
+Linux the installation of OpenAL is dependent on the distro. Do not
+hesitate to email me for support.
+
+For MIDI in Linux, TiMidity++ worked well for me
+(http://timidity.sourceforge.net/).
 
 
 List of files:

@@ -23,6 +23,7 @@ program tonegridproject;
 {$mode objfpc}{$H+}
 
 uses
+  // CMem, { Custom added for sharing memory with C library }
   {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
   {$ENDIF}{$ENDIF}

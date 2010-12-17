@@ -1,1 +1,14 @@
-TODO
+commit 11683e10a0886748cdc0cce1c71af0d88b1c4e3d
+Author: caleb9 <caleb9@users.sourceforge.net>
+Date:   Fri Dec 17 19:53:41 2010 +0100
+
+    Run-time detection of OpenAl library added. Works on Linux, should
+    work on Windows but I have to test it. TEmptySource added to Notes
+    unit - in case no MIDI device nor OpenAl library was detected,
+    this will be used as source. It does not produce any sound.
+
+commit 0e834fdda49cd04d2ccef8a7f3994b8bbc826b93
+Author: caleb9 <caleb9@users.sourceforge.net>
+Date:   Wed Dec 15 17:48:19 2010 +0100
+
+    Initial commit.

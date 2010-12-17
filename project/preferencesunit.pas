@@ -61,9 +61,9 @@ var
 
 const
   {$ifdef Win32}
-  LibOpenAlName = 'openal.';
+    LibOpenAlName = 'openal32.';
   {$else}
-  LibOpenAlName = 'libopenal.';
+    LibOpenAlName = 'libopenal.';
   {$endif}
 
 implementation
@@ -79,9 +79,9 @@ var
     Linux, the MIDI calls are done through C bindings, which are incompatible
     with Windows - that includes treating PChar and string variables. }
   {$ifdef Linux}
-  MidiName : PChar = nil;
+    MidiName : PChar = nil;
   {$else}
-  MidiName : string;
+    MidiName : string;
   {$endif}
 begin
   { Set icon for exit button }
@@ -92,10 +92,10 @@ begin
   DeviceListBox.ItemHeight := 20;
 
   {$ifdef Linux}
-  { On Linux we need to open the "/dev/sequencer" before we can query for
-    devices }
-  cMidiInit(0);
-  GetMem(MidiName, cMidiNameLength);
+    { On Linux we need to open the "/dev/sequencer" before we can query for
+      devices }
+    cMidiInit(0);
+    GetMem(MidiName, cMidiNameLength);
   {$endif}
   cMidiMidiCount(@MidiCount);
   for I := 0 to MidiCount-1 do
@@ -104,8 +104,8 @@ begin
     DeviceListBox.Items.Add(MidiName);
   end;
   {$ifdef Linux}
-  FreeMem(MidiName);
-  cMidiExit;
+    FreeMem(MidiName);
+    cMidiExit;
   {$endif}
 
   { Detect if OpenAl shared/dynamic library exists }
