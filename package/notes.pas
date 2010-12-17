@@ -55,6 +55,18 @@ IAbstractSource = interface['{F4199078-93CC-4944-AB00-0C6C74C67C44}']
       write SetGain;
 end;
 
+{ TEmptySource
+  Used if no MIDI device nor OpenAl shared library was detected}
+
+TEmptySource = class(TInterfacedObject, IAbstractSource)
+  protected
+    procedure SetGain(const NewGain : Double); virtual;
+  public
+    procedure Play; virtual;
+    procedure Stop; virtual;
+    procedure Pause; virtual;
+end;
+
 
 { TOpenAlSource
   Tones of specific frequency and duration.
@@ -319,8 +331,6 @@ const
 implementation
 
 {$I notes.inc}
-
-
 
 end.
 

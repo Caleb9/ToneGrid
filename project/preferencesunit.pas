@@ -29,8 +29,7 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   Buttons, ActnList, ExtCtrls, StdCtrls,
   { custom added }
-  PasMidi,
-  OpenAl;
+  PasMidi, OpenAl, DynLibs;
 
 type
 
@@ -48,7 +47,10 @@ type
   private
     { private declarations }
     FDevice : Integer;
+    FOpenAlDetected : Boolean;
   public
+    function OpenAlSelected : boolean; virtual;
+
     { public declarations }
     property Device : Integer
       read FDevice;
@@ -57,12 +59,20 @@ type
 var
   PreferencesForm: TPreferencesForm;
 
+const
+  {$ifdef Win32}
+  LibOpenAlName = 'openal.';
+  {$else}
+  LibOpenAlName = 'libopenal.';
+  {$endif}
+
 implementation
 
 { TPreferencesForm }
 
 procedure TPreferencesForm.FormCreate(Sender: TObject);
 var
+  LibOpenAlHandle : TLibHandle;
   MidiCount : Byte;
   I : Integer;
   { Unfortunately for now this method has to use compilation conditions - in
@@ -73,7 +83,6 @@ var
   {$else}
   MidiName : string;
   {$endif}
-  ArgV : array of PALbyte = nil;
 begin
   { Set icon for exit button }
   ImageList1.GetBitmap(0, ExitBtn.Glyph);
@@ -81,11 +90,10 @@ begin
   { Populate list of devices }
   DeviceListBox.Style := lbOwnerDrawFixed;
   DeviceListBox.ItemHeight := 20;
-  DeviceListBox.Items.Add('Internal synthesizer (OpenAl)');
-  { On Linux we need to open the "/dev/sequencer" before we can query for
-    devices }
 
   {$ifdef Linux}
+  { On Linux we need to open the "/dev/sequencer" before we can query for
+    devices }
   cMidiInit(0);
   GetMem(MidiName, cMidiNameLength);
   {$endif}
@@ -99,13 +107,23 @@ begin
   FreeMem(MidiName);
   cMidiExit;
   {$endif}
-  DeviceListBox.ItemIndex := 0;
 
-  { By default select the OpenAl synthesizer }
+  { Detect if OpenAl shared/dynamic library exists }
+  FOpenAlDetected := false;
+  LibOpenAlHandle := LoadLibrary(LibOpenAlName + SharedSuffix);
+  if LibOpenAlHandle <> NilHandle then
+  begin
+    UnloadLibrary(LibOpenAlHandle);
+    FOpenAlDetected := true;
+    InitOpenAL();
+    DeviceListBox.Items.Add('Internal synthesizer (OpenAl)');
+  end;
+
+  { By default select the first available device }
+  if DeviceListBox.Items.Count > 0 then
+    DeviceListBox.ItemIndex := 0;
   FDevice := -1;
-  { initialize OpenAL }
-  InitOpenAL();
-  AlUtInit(nil, ArgV);
+  self.DeviceListBoxSelectionChange(Sender, false);
 end;
 
 procedure TPreferencesForm.FormDestroy(Sender: TObject);
@@ -113,7 +131,17 @@ begin
   { Close MIDI }
   cMidiExit;
   { Close OpenAL }
-  AlUtExit;
+  if FOpenAlDetected then
+    AlUtExit;
+end;
+
+function TPreferencesForm.OpenAlSelected: boolean;
+begin
+  if FOpenAlDetected and
+     (FDevice = (DeviceListBox.Items.Count - 1)) then
+    Result := true
+  else
+    Result := false;
 end;
 
 procedure TPreferencesForm.ExitBtnClick(Sender: TObject);
@@ -126,21 +154,21 @@ procedure TPreferencesForm.DeviceListBoxSelectionChange(Sender: TObject;
 var
   ArgV : array of PALbyte = nil;
 begin
-  if FDevice <> (DeviceListBox.ItemIndex - 1) then
+  if FDevice <> DeviceListBox.ItemIndex then
   begin
-    FDevice := (DeviceListBox.ItemIndex - 1);
-    if FDevice = -1 then
+    FDevice := DeviceListBox.ItemIndex;
+    if self.OpenAlSelected then
     begin
       { Close possibly opened MIDI device }
       cMidiExit;
       { initialize OpenAL }
-      InitOpenAL();
       AlUtInit(nil, ArgV);
     end
     else
     begin
       { Close OpenAL }
-      AlUtExit;
+      if FOpenAlDetected then
+        AlUtExit;
       { Close previously selected MIDI device }
       cMidiExit;
       { Open new MIDI device }

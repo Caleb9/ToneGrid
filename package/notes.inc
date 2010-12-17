@@ -19,6 +19,24 @@
 ************************************************************************
 }
 
+{ TEmptySource }
+
+procedure TEmptySource.SetGain(const NewGain: Double);
+begin
+end;
+
+procedure TEmptySource.Play;
+begin
+end;
+
+procedure TEmptySource.Stop;
+begin
+end;
+
+procedure TEmptySource.Pause;
+begin
+end;
+
 { TOpenAlSource }
 
 procedure TOpenAlSource.SetGain(const NewGain: Double);
