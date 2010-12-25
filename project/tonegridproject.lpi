@@ -8,12 +8,12 @@
       <Title Value="Tone Grid"/>
       <Icon Value="0"/>
       <UseXPManifest Value="True"/>
-      <ActiveEditorIndexAtStart Value="3"/>
+      <ActiveEditorIndexAtStart Value="1"/>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <CurrentBuildNr Value="30"/>
+      <CurrentBuildNr Value="33"/>
       <ProjectVersion Value="0.0.0.0"/>
       <LegalCopyright Value="2010 Piotr Karasinski"/>
     </VersionInfo>
@@ -45,7 +45,7 @@
         <CursorPos X="6" Y="26"/>
         <TopLine Value="18"/>
         <EditorIndex Value="4"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="83"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -60,7 +60,7 @@
       <Unit2>
         <Filename Value="tonegridproject.ico"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="83"/>
         <SyntaxHighlighter Value="None"/>
       </Unit2>
       <Unit3>
@@ -121,7 +121,7 @@
         <CursorPos X="16" Y="99"/>
         <TopLine Value="89"/>
         <EditorIndex Value="3"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -134,7 +134,7 @@
         <CursorPos X="43" Y="408"/>
         <TopLine Value="390"/>
         <EditorIndex Value="0"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -162,7 +162,7 @@
         <CursorPos X="15" Y="333"/>
         <TopLine Value="311"/>
         <EditorIndex Value="1"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -170,7 +170,7 @@
         <CursorPos X="1" Y="23"/>
         <TopLine Value="1"/>
         <EditorIndex Value="2"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit16>
     </Units>

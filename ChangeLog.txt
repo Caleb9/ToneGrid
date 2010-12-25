@@ -1,3 +1,10 @@
+commit 67da969edd22e68a3a30d1d6f1ac675bf8c6a7da
+Author: caleb9 <caleb9@users.sourceforge.net>
+Date:   Fri Dec 17 22:37:45 2010 +0100
+
+    Dynamic detection of OpenAl on Windows works now. ChangeLog.txt,
+    VERSION.txt and README.txt updated.
+
 commit 11683e10a0886748cdc0cce1c71af0d88b1c4e3d
 Author: caleb9 <caleb9@users.sourceforge.net>
 Date:   Fri Dec 17 19:53:41 2010 +0100
