@@ -91,13 +91,25 @@ The application is comprised of two parts:
 2) 'project' which contains the application's main form and
    project files.
 
-To compile 'project', the user needs to install the 'package' in
-Lazarus IDE first. The process is analogous to Delphi's, and this
-short tutorial might be helpful
-http://wiki.lazarus.freepascal.org/Install_Packages
+In any case you'll need Lazarus and FPC (if you have Lazarus
+installed, you most probably already have FPC as well) to compile the
+program. For Linux, there is a primitive Makefile available, so you
+don't need to start Lazarus to build the project. Just adjust the path
+to Lazarus files in Makefile.include file, and execute
 
-Next the project-file (tonegridproject.lpi) has to be opened and built
-in Lazarus.
+$ make
+
+command in project's main directory. If everything goes well, a
+'tonegridproject' executable file will be created in 'project'
+sub-directory.
+
+Another option is to compile the whole thing from within Lazarus
+IDE. To compile 'project', user needs to install the 'package' in
+Lazarus first. The process is analogous to Delphi's, and this short
+tutorial might be helpful
+http://wiki.lazarus.freepascal.org/Install_Packages. Next,
+project-file (tonegridproject.lpi) has to be opened and built in
+Lazarus.
 
 
 How to run?
@@ -107,11 +119,11 @@ On Linux and Windows, there is MIDI support, for external and software
 synthesizers (currently, the sound card's internal synthesizers are
 not supported).
 
-The program can also synthesize tones itself, with use of OpenAl free
+Program can also synthesize tones itself, with use of OpenAl free
 software cross-platform audio API. OpenAL for different operating
 systems can be obtained from
-http://connect.creativelabs.com/openal/Downloads/Forms/AllItems.aspx
-ToneGrid detects if OpenAl shared/dynamic library is present on the
+http://connect.creativelabs.com/openal/Downloads/Forms/AllItems.aspx.
+ToneGrid detects if OpenAl shared/dynamic library is present in the
 system.
 
 
@@ -136,34 +148,39 @@ For MIDI in Linux, TiMidity++ worked well for me
 (http://timidity.sourceforge.net/).
 
 
-List of files:
+Some of the files:
 ==============
 ToneGrid/
 |-- package			(Package containing units and components used in the program)
 |   |-- cmidi.c
 |   |-- cmidi.h			(C low-level MIDI functions for Linux)
-|   |-- graphicgrid.inc
-|   |-- graphicgrid.pas		(GraphicGrid custom component)
+|   |-- graphicgrid.inc		(GraphicGrid custom component's implementation)
+|   |-- graphicgrid.pas		(GraphicGrid custom component's declaration)
 |   |-- notes.inc
 |   |-- notes.pas
 |   |-- openal.pas		(OpenAL Delphi bindings from http://www.noeska.com/doal/)
 |   |-- pasmidi.pp
-|   |-- TGraphicGrid.png
+|   |-- TGraphicGrid.png	(Icon for TGraphicGrid component)
 |   |-- tonegridpkg.lpk
 |   |-- tonegridpkg.lrs
-|   `-- tonegridpkg.pas
+|   |-- tonegridpkg.pas
+|   `-- Makefile
 |-- project			(Main application project)
 |   |-- preferencesunit.lfm
 |   |-- preferencesunit.lrs
 |   |-- preferencesunit.pas
 |   |-- preferencesunit.ppu
-|   |-- tonegridproject.ico
+|   |-- tonegridproject.ico	(Icon for the program)
 |   |-- tonegridproject.lpi
 |   |-- tonegridproject.lpr
 |   |-- tonegridproject.lrs
 |   |-- tonegridunit.lfm
 |   |-- tonegridunit.lrs
 |   |-- tonegridunit.pas
+|   `-- Makefile
+|-- Makefile
+|-- Makefile.include
 `-- README.txt			(this file)
+
 
 Enjoy! ;)

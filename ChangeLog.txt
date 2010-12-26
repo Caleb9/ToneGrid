@@ -1,3 +1,9 @@
+commit 826ed856479f45e53b3247f05c4c068fedfe4a5a
+Author: caleb9 <caleb9@users.sourceforge.net>
+Date:   Sun Dec 26 13:31:18 2010 +0100
+
+    Makefiles modified. Comments added and changed in all files.
+
 commit cff1b023af54297811faf5f9c70a7699f603d53f
 Author: caleb9 <caleb9@users.sourceforge.net>
 Date:   Sat Dec 25 14:42:01 2010 +0100
