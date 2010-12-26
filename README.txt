@@ -14,12 +14,12 @@
     You should have received a copy of the GNU General Public License    
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                                                          
-    email: peter.karasinski@gmail.com                                    
+    email: caleb9@users.sourceforge.net                                    
 *************************************************************************
 
 ToneGrid
 
-peter.karasinski@gmail.com
+caleb9@users.sourceforge.net
 http://sourceforge.net/projects/tonegrid/
 
 

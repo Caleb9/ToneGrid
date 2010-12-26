@@ -1,3 +1,9 @@
+commit cff1b023af54297811faf5f9c70a7699f603d53f
+Author: caleb9 <caleb9@users.sourceforge.net>
+Date:   Sat Dec 25 14:42:01 2010 +0100
+
+    Makefiles added.
+
 commit 67da969edd22e68a3a30d1d6f1ac675bf8c6a7da
 Author: caleb9 <caleb9@users.sourceforge.net>
 Date:   Fri Dec 17 22:37:45 2010 +0100
@@ -9,10 +15,7 @@ commit 11683e10a0886748cdc0cce1c71af0d88b1c4e3d
 Author: caleb9 <caleb9@users.sourceforge.net>
 Date:   Fri Dec 17 19:53:41 2010 +0100
 
-    Run-time detection of OpenAl library added. Works on Linux, should
-    work on Windows but I have to test it. TEmptySource added to Notes
-    unit - in case no MIDI device nor OpenAl library was detected,
-    this will be used as source. It does not produce any sound.
+    Run-time detection of OpenAl library added. Works on Linux, should work on Windows but I have to test it. TEmptySource added to Notes unit - in case no MIDI device nor OpenAl library was detected, this will be used as source. It does not produce any sound.
 
 commit 0e834fdda49cd04d2ccef8a7f3994b8bbc826b93
 Author: caleb9 <caleb9@users.sourceforge.net>

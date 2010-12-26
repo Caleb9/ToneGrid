@@ -1,3 +1,5 @@
+{ This is an automatically generated lazarus resource file }
+
 LazarusResources.Add('TPreferencesForm','FORMDATA',[
   'TPF0'#16'TPreferencesForm'#15'PreferencesForm'#4'Left'#3#210#1#6'Height'#3','
   +#1#3'Top'#3#1#1#5'Width'#3#144#1#13'ActiveControl'#7#13'DeviceListBox'#8'Aut'
