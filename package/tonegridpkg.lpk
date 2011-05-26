@@ -4,10 +4,15 @@
     <Name Value="tonegridpkg"/>
     <Author Value="Piotr Karasinski"/>
     <CompilerOptions>
-      <Version Value="8"/>
+      <Version Value="9"/>
       <SearchPaths>
         <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <UseAnsiStrings Value="False"/>
+        </SyntaxOptions>
+      </Parsing>
       <Linking>
         <Debugging>
           <UseHeaptrc Value="True"/>
@@ -24,7 +29,7 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."/>
-    <Files Count="9">
+    <Files Count="8">
       <Item1>
         <Filename Value="graphicgrid.pas"/>
         <HasRegisterProc Value="True"/>
@@ -43,26 +48,21 @@ You should have received a copy of the GNU General Public License along with thi
         <Type Value="Include"/>
       </Item4>
       <Item5>
-        <Filename Value="openal.pas"/>
-        <AddToUsesPkgSection Value="False"/>
-        <UnitName Value="openal"/>
-      </Item5>
-      <Item6>
         <Filename Value="tonegridpkg.lrs"/>
         <Type Value="LRS"/>
-      </Item6>
-      <Item7>
+      </Item5>
+      <Item6>
         <Filename Value="pasmidi.pp"/>
         <UnitName Value="PasMidi"/>
-      </Item7>
-      <Item8>
+      </Item6>
+      <Item7>
         <Filename Value="cmidi.c"/>
         <Type Value="Text"/>
-      </Item8>
-      <Item9>
+      </Item7>
+      <Item8>
         <Filename Value="cmidi.h"/>
         <Type Value="Text"/>
-      </Item9>
+      </Item8>
     </Files>
     <Type Value="RunAndDesignTime"/>
     <RequiredPkgs Count="2">

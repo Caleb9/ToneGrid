@@ -160,10 +160,10 @@ function cMidiInit(Ignored : Byte = 0) : Integer;
 function cMidiExit : Integer;
 function cMidiMidiCount(MidiCount : PByte) : Integer;
 function cMidiSynthCount(SynthCount : PByte) : Integer;
-function cMidiMidiName(const Device : Byte; Name : PChar) : Integer;
+function cMidiMidiName(const Device : Byte; Name : String) : Integer;
 function cMidiNoteOn(const KeyNumber : Byte; const Velocity : Byte;
                      const Ignored : Byte) : Integer;
-function cMidiNoteOff(const KeyNumber : Byte; const Velocity : Byte;
+function cMidiNoteOff(const KeyNumber : Byte; (* const Velocity : Byte; *)
                       const Ignored : Byte) : Integer;
 function cMidiAllSoundsOff(const Ignored : Byte) : Integer;
 function cMidiAllNotesOff(const Ignored : Byte) : Integer;
@@ -194,9 +194,9 @@ begin
   Result := 0;
 end;
 
-function cMidiMidiName(const Device : Byte; Name : PChar) : Integer;
+function cMidiMidiName(const Device : Byte; Name : String) : Integer;
 begin
-  Name := nil;
+  Name := '';
   Result := 0;
 end;
 
@@ -206,7 +206,7 @@ begin
   Result := 0;
 end;
 
-function cMidiNoteOff(const KeyNumber : Byte; const Velocity : Byte;
+function cMidiNoteOff(const KeyNumber : Byte; (* const Velocity : Byte; *)
                       const Ignored : Byte) : Integer;
 begin
   Result := 0;
@@ -225,4 +225,4 @@ end;
 {$endif} // {$ifdef Win32}
 {$endif} // {$ifdef Linux}
 
-end.
+end.

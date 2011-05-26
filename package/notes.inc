@@ -38,7 +38,7 @@ begin
 end;
 
 { TOpenAlSource }
-
+{$IFNDEF DARWIN}
 procedure TOpenAlSource.SetGain(const NewGain: Double);
 begin
   AlSourceF(FSource, AL_GAIN, NewGain); // OpenAL routine
@@ -190,6 +190,7 @@ procedure TOpenAlSource.Pause;
 begin
   AlSourcePause(FSource); // OpenAL routine
 end;
+{$ENDIF}
 
 { TNote }
 
@@ -339,7 +340,7 @@ end;
 
 
 { TNoteOpenAlSource }
-
+{$IFNDEF DARWIN}
 constructor TNoteOpenAlSource.Create(Note: TNote; const Duration: Word;
                                   const Attack: Word;
                                   const Release: Word);
@@ -358,6 +359,7 @@ class function TNoteOpenAlSource.MillisecondsToSamples(const Duration: Word;
 begin
   Result := Round(Duration / 1000.0 * SampleRate);
 end;
+{$ENDIF}
 
 { TMidiSource }
 

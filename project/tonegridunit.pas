@@ -400,9 +400,12 @@ begin
     SetLength(FSounds, (High(FNotes)+1));
     for I := Low(FSounds) to High(FSounds) do
     begin
+{$IFNDEF DARWIN}
       if PreferencesForm.OpenAlSelected then
         FSounds[I] := TNoteOpenAlSource.Create(FNotes[I], Length, 30, 60)
-      else if PreferencesForm.Device <> -1 then
+      else
+{$ENDIF}
+      if PreferencesForm.Device <> -1 then
         FSounds[I] := TMidiSource.Create(FNotes[I], PreferencesForm.Device)
       else
         FSounds[I] := TEmptySource.Create;

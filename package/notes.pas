@@ -29,9 +29,13 @@ unit Notes;
 interface
 
 uses
-  Classes, SysUtils, OpenAl, Math, Contnrs,
+  Classes, SysUtils, Math, Contnrs,
   { custom added }
-  PasMidi;
+  PasMidi
+{$IFNDEF DARWIN}
+  , OpenAl
+{$ENDIF}
+  ;
 
 const
   { For simplicity we'll use a fixed sampling rate }
@@ -72,7 +76,7 @@ end;
   Tones of specific frequency and duration.
   Tones are generated with sine waves, and played with OpenAL audio API. To use
   this class, OpenAL needs to be initialized already. }
-
+{$IFNDEF DARWIN}
 TOpenAlSource = class(TInterfacedObject, IAbstractSource)
   protected
     FFreq : TALfloat;             // frequency of the tone (in Hz)
@@ -109,6 +113,7 @@ TOpenAlSource = class(TInterfacedObject, IAbstractSource)
     //  //read FGain
     //  write SetGain;
 end;
+{$ENDIF}
 
 { Names for natural pitch classes (C, D, E, F, G, A, B) }
 TPitchClass = (pC, pD, pE, pF, pG, pA, pB);
@@ -161,7 +166,7 @@ end;
   Instead of frequencies, we use notion of notes as TNote
   objects. Lengths are expressed in milliseconds (instead of samples as in the
   ancestor class). }
-
+{$IFNDEF DARWIN}
 TNoteOpenAlSource = class(TOpenAlSource)
   public
     { We're overloading the constructor so that TOpenAlSource.Create is also
@@ -179,7 +184,7 @@ TNoteOpenAlSource = class(TOpenAlSource)
           const SampleRate : TALSizeI = DefaultSampleRate) : TALSizeI; virtual;
 
 end;
-
+{$ENDIF}
 
 { TMidiSource
   Emits midi messages instead of synthesizing sound. Works in Linux (through

@@ -10,14 +10,14 @@ object PreferencesForm: TPreferencesForm
   ClientWidth = 400
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '0.9.28.2'
+  LCLVersion = '0.9.30'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     Left = 10
-    Height = 18
+    Height = 17
     Top = 10
-    Width = 94
+    Width = 88
     BorderSpacing.Left = 10
     BorderSpacing.Top = 10
     Caption = 'Sound device:'
@@ -49,8 +49,8 @@ object PreferencesForm: TPreferencesForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ExitBtn
     Left = 10
-    Height = 218
-    Top = 33
+    Height = 219
+    Top = 32
     Width = 380
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 5
@@ -58,7 +58,6 @@ object PreferencesForm: TPreferencesForm
     ItemHeight = 0
     OnSelectionChange = DeviceListBoxSelectionChange
     TabOrder = 1
-    TopIndex = -1
   end
   object ImageList1: TImageList
     left = 40

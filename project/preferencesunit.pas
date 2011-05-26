@@ -29,7 +29,11 @@ uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   Buttons, ActnList, ExtCtrls, StdCtrls,
   { custom added }
-  PasMidi, OpenAl, DynLibs;
+  PasMidi, DynLibs
+{$IFNDEF DARWIN}
+  , OpenAl
+{$ENDIF}
+  ;
 
 type
 
@@ -109,13 +113,16 @@ begin
   {$endif}
 
   { Detect if OpenAl shared/dynamic library exists }
+
   FOpenAlDetected := false;
   LibOpenAlHandle := LoadLibrary(LibOpenAlName + SharedSuffix);
   if LibOpenAlHandle <> NilHandle then
   begin
     UnloadLibrary(LibOpenAlHandle);
     FOpenAlDetected := true;
+{$IFNDEF DARWIN}
     InitOpenAL();
+{$ENDIF}
     DeviceListBox.Items.Add('Internal synthesizer (OpenAl)');
   end;
 
@@ -131,8 +138,10 @@ begin
   { Close MIDI }
   cMidiExit;
   { Close OpenAL }
+{$IFNDEF DARWIN}
   if FOpenAlDetected then
     AlUtExit;
+{$ENDIF}
 end;
 
 function TPreferencesForm.OpenAlSelected: boolean;
@@ -151,8 +160,10 @@ end;
 
 procedure TPreferencesForm.DeviceListBoxSelectionChange(Sender: TObject;
   User: boolean);
+{$IFNDEF DARWIN}
 var
   ArgV : array of PALbyte = nil;
+{$ENDIF}
 begin
   if FDevice <> DeviceListBox.ItemIndex then
   begin
@@ -162,13 +173,17 @@ begin
       { Close possibly opened MIDI device }
       cMidiExit;
       { initialize OpenAL }
+{$IFNDEF DARWIN}
       AlUtInit(nil, ArgV);
+{$ENDIF}
     end
     else
     begin
       { Close OpenAL }
+{$IFNDEF DARWIN}
       if FOpenAlDetected then
         AlUtExit;
+{$ENDIF}
       { Close previously selected MIDI device }
       cMidiExit;
       { Open new MIDI device }
@@ -181,4 +196,4 @@ initialization
   {$I preferencesunit.lrs}
 
 end.
-
+
